@@ -1,0 +1,12 @@
+cradle:
+  cabal:
+    - path: "./src"
+      component: "lib:Game-of-life"
+    - path: "./tests/doctests.hs"
+      component: "Game-of-life:doctests"
+    - path: "./tests"
+      component: "Game-of-life:test-library"
+    - path: "./bin/Clashi.hs"
+      component: "Game-of-life:exe:clashi"
+    - path: "./bin/Clash.hs"
+      component: "Game-of-life:exe:clash"
