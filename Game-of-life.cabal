@@ -2,8 +2,8 @@ cabal-version:       2.4
 name:                Game-of-life
 version:             0.1
 license:             BSD-2-Clause
-author:              John Smith <john@example.com>
-maintainer:          John Smith <john@example.com>
+author:              Jack Sørensen <jkrs@itu.dk>
+maintainer:          Jack Sørensen <jkrs@itu.dk>
 
 common common-options
   default-extensions:
@@ -82,7 +82,8 @@ library
   import: common-options
   hs-source-dirs: src
   exposed-modules:
-    Example.Project
+    Project
+    Types
   default-language: Haskell2010
 
 -- Builds the executable 'clash', with Game-of-life project in scope
