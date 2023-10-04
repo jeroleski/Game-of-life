@@ -1,7 +1,7 @@
 module Interface where
 
 import Types
-import Data
+import Data.List
 
 show :: Cell -> String
 show Dead = "."

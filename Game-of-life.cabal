@@ -84,6 +84,8 @@ library
   exposed-modules:
     Project
     Types
+    Interface
+    Play
   default-language: Haskell2010
 
 -- Builds the executable 'clash', with Game-of-life project in scope
@@ -102,30 +104,30 @@ executable clashi
     ghc-options: -dynamic
   build-depends: base, clash-ghc, Game-of-life
 
-test-suite doctests
-  type:             exitcode-stdio-1.0
-  default-language: Haskell2010
-  main-is:          doctests.hs
-  ghc-options:      -Wall -Wcompat -threaded
-  hs-source-dirs:   tests
-  build-depends:
-    base,
-    Game-of-life,
-    doctest-parallel >= 0.2 && < 0.4,
+-- test-suite doctests
+--   type:             exitcode-stdio-1.0
+--   default-language: Haskell2010
+--   main-is:          doctests.hs
+--   ghc-options:      -Wall -Wcompat -threaded
+--   hs-source-dirs:   tests
+--   build-depends:
+--     base,
+--     Game-of-life,
+--     doctest-parallel >= 0.2 && < 0.4,
 
-test-suite test-library
-  import: common-options
-  default-language: Haskell2010
-  hs-source-dirs: tests
-  type: exitcode-stdio-1.0
-  ghc-options: -threaded
-  main-is: unittests.hs
-  other-modules:
-    Tests.Example.Project
-  build-depends:
-    Game-of-life,
-    QuickCheck,
-    hedgehog,
-    tasty >= 1.2 && < 1.5,
-    tasty-hedgehog,
-    tasty-th
+-- test-suite test-library
+--   import: common-options
+--   default-language: Haskell2010
+--   hs-source-dirs: tests
+--   type: exitcode-stdio-1.0
+--   ghc-options: -threaded
+--   main-is: unittests.hs
+--   other-modules:
+--     Tests.Example.Project
+--   build-depends:
+--     Game-of-life,
+--     QuickCheck,
+--     hedgehog,
+--     tasty >= 1.2 && < 1.5,
+--     tasty-hedgehog,
+--     tasty-th

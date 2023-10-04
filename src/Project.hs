@@ -6,8 +6,12 @@ import Types
 import Interface
 import Play
 
-myFunc :: Types.Cell -> Signed 8
-myFunc a = 9
+initGrid :: Grid
+initGrid = [
+    [Dead, Alive, Dead],
+    [Dead, Dead, Alive],
+    [Alive, Alive, Alive]
+]
 
 topEntity :: Types.Cell -> Signed 8
-topEntity = myFunc
+topEntity = next initGrid
