@@ -7,20 +7,18 @@ import Clash.HaskellPrelude
 -- showCell :: Cell -> String
 -- showCell Dead = "."
 -- showCell Alive = "#"
-
-showRow :: Row -> String
-showRow = foldr (\c acc -> show c ++ acc) ""
-
-showGrid :: Grid -> String
-showGrid g = showCols g ++ "\n" where
-    showCols = foldr (\r acc -> showRow r ++ "\n" ++ acc) ""
+-- showCell :: Cell -> String
+-- showCell Dead = "."
+-- showCell Alive = "#"
 
 instance Show Cell where
     show Dead = "."
     show Alive = "#"
 
--- instance Show Row where
---     show = foldr (\c acc -> show c ++ acc) ""
+showGrid :: Grid -> String
+showGrid g = showCols g ++ "\n" where
+    showRow = foldr (\c acc -> show c ++ acc) ""
+    showCols = foldr (\r acc -> showRow r ++ "\n" ++ acc) ""
 
 -- instance Show Grid where
 --     show g = showCols g ++ "\n" where

@@ -3,8 +3,7 @@ module Types where
 import Clash.HaskellPrelude
 
 data Cell = Dead | Alive
-type Row = [Cell]
-type Grid = [Row]
+type Grid = [[Cell]]
 
 data NeighbourRow = NeighbourRow {w :: Cell, m :: Cell, e :: Cell}
 data NeighbourHood = NeighbourHood {n :: NeighbourRow, c :: NeighbourRow, s :: NeighbourRow}
