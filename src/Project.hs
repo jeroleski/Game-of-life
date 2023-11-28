@@ -1,12 +1,8 @@
 module Project where
 
-import Clash.Prelude hiding ((++), length, fromList)
+import Clash.Prelude
 import Clash.HaskellPrelude
--- import Data.List hiding (take)
--- import Data.Maybe
-import Clash.Sized.Vector --hiding ((++), length)
--- import Clash.Explicit.SimIO
--- import Clash.Sized.Signed
+import Clash.Sized.Vector
 
 import Types
 import Interface

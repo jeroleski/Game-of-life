@@ -4,23 +4,34 @@ import Clash.HaskellPrelude
 import Clash.Prelude
 import Clash.Sized.Vector
 
-type Matrix n m a = Vec n (Vec m a)
-
+-- | The value of a single Cell
 data Cell = Dead | Alive
-type CGrid n = Matrix n n Cell
-
+-- | The Cells to the west and east
 data NeighbourRow = NeighbourRow {w :: Cell, m :: Cell, e :: Cell}
-type RGrid n = Matrix n n NeighbourRow
+-- | The Cells to the north and south along with their west and east neighbours
 data NeighbourHood = NeighbourHood {n :: NeighbourRow, c :: NeighbourRow, s :: NeighbourRow}
+
+{- The standard 2D list type
+n :: lenth of the outer list
+m :: length of all inner lists
+a :: the types stored in the matrix
+-}
+type Matrix n m a = Vec n (Vec m a)
+-- | Matrix types for Cells and Neighbours
+type CGrid n = Matrix n n Cell
+type RGrid n = Matrix n n NeighbourRow
 type HGrid n = Matrix n n NeighbourHood
 
+-- | Convert a True condition to an Alive Cell
 aliveIf :: Bool -> Cell
 aliveIf False = Dead
 aliveIf True = Alive
 
+-- | Check if a Cell is Alive
 isAlive :: Cell -> Bool
 isAlive Dead = False
 isAlive Alive = True
 
+-- | Extract the center cell from the 9 surounding Neighbours
 center :: NeighbourHood -> Cell
 center = m . c
