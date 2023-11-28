@@ -4,13 +4,6 @@ import Types
 import Data.List
 import Clash.HaskellPrelude
 
--- -- showCell :: Cell -> String
--- -- showCell Dead = "."
--- -- showCell Alive = "#"
--- -- showCell :: Cell -> String
--- -- showCell Dead = "."
--- -- showCell Alive = "#"
-
 instance Show Cell where
     show Dead = "."
     show Alive = "#"
@@ -20,9 +13,9 @@ instance Show Cell where
 --     showRow = foldr (\c acc -> show c ++ acc) ""
 --     showCols = foldr (\r acc -> showRow r ++ "\n" ++ acc) ""
 
--- -- instance Show Grid where
--- --     show g = showCols g ++ "\n" where
--- --         showCols = foldr (\r acc -> show r ++ "\n" ++ acc) ""
+-- instance Show Grid where
+--     show g = showCols g ++ "\n" where
+--         showCols = foldr (\r acc -> show r ++ "\n" ++ acc) ""
 
 -- showNr :: NeighbourRow -> String
 -- showNr nr = "|" ++ show (w nr) ++ show (m nr) ++ show (e nr)

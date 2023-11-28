@@ -22,6 +22,16 @@ initGrid = (
         Nil
     )
 
+alterGrid :: CGrid 5
+alterGrid = (
+        (Dead :> Alive :> Dead :> Alive :> Dead :> Nil) :>
+        (Alive :> Dead :> Alive :> Dead :> Alive :> Nil) :>
+        (Dead :> Alive :> Dead :> Alive :> Dead :> Nil) :>
+        (Alive :> Dead :> Alive :> Dead :> Alive :> Nil) :>
+        (Dead :> Alive :> Dead :> Alive :> Dead :> Nil) :>
+        Nil
+    )
+
 -- | Play the Grid the given number of rounds
 iteratePlay :: KnownNat n => Int -> CGrid n -> CGrid n
 iteratePlay 0 g = g
@@ -33,4 +43,4 @@ iteratePlay i g = iteratePlay (i-1) (play g)
 -- playAndPrint i g = showGrid g ++ playAndPrint (i-1) (play g)
 
 topEntity :: CGrid 5
-topEntity = initGrid
+topEntity = iteratePlay 3 alterGrid
