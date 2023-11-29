@@ -39,6 +39,6 @@ cabal.config
 *.iml
 
 # HDL directories often created during development cycle
-/vhdl
-/verilog
-/systemverilog
+# /vhdl
+# /verilog
+# /systemverilog
