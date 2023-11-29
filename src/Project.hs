@@ -1,8 +1,9 @@
 module Project where
 
-import Clash.Prelude
+import Clash.Prelude hiding ((++))
 import Clash.HaskellPrelude
-import Clash.Sized.Vector
+import Clash.Sized.Vector hiding ((++))
+import Data.List hiding (foldr)
 
 import Types
 import Interface
@@ -34,9 +35,9 @@ iteratePlay 0 g = g
 iteratePlay i g = iteratePlay (i-1) (play g)
 
 -- | Play the Grid the given number of rounds and concatenate each iteration as a String 
--- playAndPrint :: Int -> Grid -> String
--- playAndPrint 0 g = showGrid g
--- playAndPrint i g = showGrid g ++ playAndPrint (i-1) (play g)
+playAndPrint :: KnownNat n => Int -> CGrid n -> String
+playAndPrint 0 g = showGrid g
+playAndPrint i g = showGrid g ++ playAndPrint (i-1) (play g)
 
 topEntity :: CGrid 5
 topEntity = iteratePlay 3 alterGrid

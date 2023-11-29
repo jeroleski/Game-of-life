@@ -14,7 +14,7 @@ xs :: the list to map from
 innerMap3elm :: (a -> a -> a -> b) -> a -> Vec (n+1) a -> Vec n b
 innerMap3elm f d (x `Cons` Nil) = Nil
 innerMap3elm f d (x `Cons` (y `Cons` Nil)) = f x y d `Cons` Nil
-innerMap3elm f d (x `Cons` (y `Cons` (z `Cons` xs))) = f x y z `Cons` map3elm f d (y `Cons` (z `Cons` xs))
+innerMap3elm f d (x `Cons` (y `Cons` (z `Cons` xs))) = f x y z `Cons` innerMap3elm f d (y `Cons` (z `Cons` xs))
 
 {- | Maps a list where the transformer function need 3 consecitive elements at once
 f :: transformation function

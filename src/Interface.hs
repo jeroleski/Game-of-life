@@ -1,14 +1,23 @@
 module Interface where
 
-import Types
-import Data.List
 import Clash.HaskellPrelude
+import Clash.Sized.Vector hiding ((++))
+import Data.List hiding (foldr)
+
+import Types
 
 instance Show Cell where
     show Dead = "."
     show Alive = "#"
 
--- showGrid :: Grid -> String
+showVec :: Show a => Vec n a -> String
+showVec Nil = "\n"
+showVec (x `Cons` xs) = show x ++ showVec xs
+
+showGrid :: CGrid n -> String
+showGrid g = foldr (\row acc -> acc ++ "\n" ++ showVec row) "" g
+
+-- showGrid :: CGrid n -> String
 -- showGrid g = showCols g ++ "\n" where
 --     showRow = foldr (\c acc -> show c ++ acc) ""
 --     showCols = foldr (\r acc -> showRow r ++ "\n" ++ acc) ""
