@@ -7,9 +7,9 @@ import Clash.Sized.Vector
 -- | The value of a single Cell
 data Cell = Dead | Alive
 -- | The Cells to the west and east
-data NeighbourRow = NeighbourRow {w :: Cell, m :: Cell, e :: Cell}
--- | The Cells to the north and south along with their west and east neighbours
-data NeighbourHood = NeighbourHood {n :: NeighbourRow, c :: NeighbourRow, s :: NeighbourRow}
+data NeighborRow = NeighborRow {w :: Cell, m :: Cell, e :: Cell}
+-- | The Cells to the north and south along with their west and east neighbors
+data NeighborHood = NeighborHood {n :: NeighborRow, c :: NeighborRow, s :: NeighborRow}
 
 {- The standard 2D list type
 n :: lenth of the outer list
@@ -17,10 +17,10 @@ m :: length of all inner lists
 a :: the types stored in the matrix
 -}
 type Matrix n m a = Vec n (Vec m a)
--- | Matrix types for Cells and Neighbours
+-- | Matrix types for Cells and Neighbors
 type CGrid n = Matrix n n Cell
-type RGrid n = Matrix n n NeighbourRow
-type HGrid n = Matrix n n NeighbourHood
+type RGrid n = Matrix n n NeighborRow
+type HGrid n = Matrix n n NeighborHood
 
 -- | Convert a True condition to an Alive Cell
 aliveIf :: Bool -> Cell
@@ -32,6 +32,6 @@ isAlive :: Cell -> Bool
 isAlive Dead = False
 isAlive Alive = True
 
--- | Extract the center cell from the 9 surounding Neighbours
-center :: NeighbourHood -> Cell
+-- | Extract the center cell from the 9 surounding Neighbors
+center :: NeighborHood -> Cell
 center = m . c

@@ -2,9 +2,10 @@ module Interface where
 
 import Clash.HaskellPrelude
 import Clash.Sized.Vector hiding ((++))
-import Data.List hiding (foldr)
+import Data.List hiding (foldr, map)
 
 import Types
+import Utils
 
 instance Show Cell where
     show Dead = "."
@@ -14,32 +15,6 @@ showVec :: Show a => Vec n a -> String
 showVec Nil = "\n"
 showVec (x `Cons` xs) = show x ++ showVec xs
 
-showGrid :: CGrid n -> String
-showGrid g = foldr (\row acc -> acc ++ "\n" ++ showVec row) "" g
+showMatrix :: Show a => Matrix n m a -> String
+showMatrix = foldr (\row acc -> acc ++ showVec row) ""
 
--- showGrid :: CGrid n -> String
--- showGrid g = showCols g ++ "\n" where
---     showRow = foldr (\c acc -> show c ++ acc) ""
---     showCols = foldr (\r acc -> showRow r ++ "\n" ++ acc) ""
-
--- instance Show Grid where
---     show g = showCols g ++ "\n" where
---         showCols = foldr (\r acc -> show r ++ "\n" ++ acc) ""
-
--- showNr :: NeighbourRow -> String
--- showNr nr = "|" ++ show (w nr) ++ show (m nr) ++ show (e nr)
-
--- showNrGrid :: [[NeighbourRow]] -> String
--- showNrGrid = foldr (\r acc -> foldr (\c acc2 -> showNr c ++ acc2) "|\n" r ++ acc) "\n"
-
--- showNh :: NeighbourHood -> String
--- showNh nh = "|" ++ showNr (n nh) ++ showNr (c nh) ++ showNr (s nh)
-
--- showNhGrid :: [[NeighbourHood]] -> String
--- showNhGrid = foldr (\r acc -> foldr (\c acc2 -> showNh c ++ acc2) "\n" r ++ acc) "\n"
-
--- nh2alive :: [[NeighbourHood]] -> [[Int]]
--- nh2alive = (map . map) aliveNeighbours
-
--- showIntGrid :: [[Int]] -> String
--- showIntGrid = foldr (\r acc -> foldr (\c acc2 -> "|" ++ show c ++ acc2) "|\n" r ++ acc) "\n"
