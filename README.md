@@ -48,12 +48,14 @@ Or run the game manually by specifying the number of rounds to play and manually
 import Project
 import Grid
 import Types
+import Interface
 import Clash.Sized.Vector
 
-iteratePlay nRounds grid
+newGrid = iteratePlay nRounds grid
+showMatrix newGrid
 ```
 
-The setup manual grid construction can be seen in ```src/Grid.hs```.
+The setup for manual grid construction can be seen in ```src/Grid.hs```.
 
 ### Automated grid injection
 
@@ -70,7 +72,7 @@ This will inject a grid into the project by replacing the ```src/Grid.hs``` modu
 
 ### On FPGAs
 
-To compile the project to VHDL, run:
+To compile the project to VHDL run:
 
 ```bash
 stack run clash -- Project --vhdl
