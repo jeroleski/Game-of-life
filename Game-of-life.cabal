@@ -87,6 +87,7 @@ library
     Interface
     Play
     Utils
+    Grid
   default-language: Haskell2010
 
 -- Builds the executable 'clash', with Game-of-life project in scope
